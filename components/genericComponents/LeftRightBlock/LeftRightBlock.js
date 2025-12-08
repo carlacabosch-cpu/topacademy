@@ -7,8 +7,8 @@ import { RichTextToHTML } from "../../../functions/storyBlokRichTextRenderer";
 export default function LeftRightBlock({ blok }) {
 	let cssDirection = blok.direction === "imageright" ? "--reverse" : "";
 	let size = blok.forWithPageNavigator ? "--with-navigator" : "";
-	let cssColorBg = "--" + blok.colorcode.content.title;
-	let cssColorFont = "--highlighted-" + blok.colorcode.content.title;
+	let cssColorBg = "--" + (blok.colorcode?.content?.title || "default");
+	let cssColorFont = "--highlighted-" + (blok.colorcode?.content?.title || "default");
 
 	return (
 		<>
