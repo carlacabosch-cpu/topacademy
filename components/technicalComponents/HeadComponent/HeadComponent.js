@@ -59,6 +59,7 @@ export default class HeadComponent extends Component {
 				{this.props.socialTags && Object.entries(this.props.socialTags).map(getTagElement)}
 				{this.state.loaded && <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@3.9.97/css/materialdesignicons.min.css" />}
 				{this.state.loaded && <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet" />}
+				<script src="https://t.contentsquare.net/uxa/830418a476df2.js"></script>
 			</Head>
 			<Script id="tawktoscriptwrapper" dangerouslySetInnerHTML={{
 				__html: `var Tawk_API=Tawk_API||{ }, Tawk_LoadStart=new Date();
@@ -83,11 +84,7 @@ export default class HeadComponent extends Component {
 				`
 			}}>
 			</Script>
-			<Script
-				id="contentsquare-tracking"
-				src="https://t.contentsquare.net/uxa/830418a476df2.js"
-				strategy="afterInteractive"
-			/>
+		
 		</>;
 	}
 }
