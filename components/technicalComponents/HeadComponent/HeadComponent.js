@@ -2,7 +2,6 @@
 import * as PropTypes from "prop-types";
 import Head from "next/head";
 import Script from "next/script"
-import { hotjar } from 'react-hotjar' 
 
 function getTagElement([key, value]) {
 	if (key === "title") {
@@ -43,7 +42,6 @@ export default class HeadComponent extends Component {
 				loaded: document.readyState === "complete"
 			});
 		});
-		hotjar.initialize(3228407, 6);
 	}
 
 	render() {
@@ -85,6 +83,11 @@ export default class HeadComponent extends Component {
 				`
 			}}>
 			</Script>
+			<Script
+				id="contentsquare-tracking"
+				src="https://t.contentsquare.net/uxa/830418a476df2.js"
+				strategy="afterInteractive"
+			/>
 		</>;
 	}
 }
