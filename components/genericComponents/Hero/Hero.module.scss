@@ -1,5 +1,5 @@
 @import "../../../styles/font-mixins.scss";
-@import "../../../styles/colors.scss";
+@import "../../../styles /colors.scss";
 
 
 .hero {
@@ -94,6 +94,7 @@
   &__title {
     margin-bottom: 10px;
     @include main-title-font;
+  
 
     &--no-media {
       @extend .hero__title;
