@@ -1,5 +1,5 @@
 @import "../../../styles/font-mixins.scss";
-@import "../../../styles/colors.scss";
+@import "../../../styles /colors.scss";
 
 
 .hero {
@@ -42,7 +42,7 @@
 
   &--purple {
     @extend .hero;
-    background-color: $color-purple-very-light;
+    background-color: $color-blue-classroomexample;
   }
 
   &__container {
