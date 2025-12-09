@@ -93,7 +93,8 @@
 
   &__title {
     margin-bottom: 10px;
-    @include very-small-title-font;
+    @include main-title-font;
+  
 
     &--no-media {
       @extend .hero__title;
