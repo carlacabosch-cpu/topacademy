@@ -9,13 +9,14 @@ export default function LeftRightBlock({ blok }) {
 	let size = blok.forWithPageNavigator ? "--with-navigator" : "";
 	let cssColorBg = "--" + (blok.colorcode?.content?.title || "default");
 	let cssColorFont = "--highlighted-" + (blok.colorcode?.content?.title || "default");
+	let showImage = (blok.image && blok.image.filename);
 
 	return (
 		<>
 			<section {...storyblokEditable(blok)} className={[css["highlighted-content" + size], css["highlighted-content"]].join(" ")}>
 				<div className={[css["highlighted-content__image-container" + cssDirection + size], css["highlighted-content__image-container" + cssColorBg]].join(" ")}>
 					<div className={css["highlighted-content__image-responsive-wrapper"]}>
-						{getDefaultStoryBlokImageSet(blok.image.filename, blok.image.alt, { largestImageWidth: 870, largestImageHeigth: 870 }, 850, css["highlighted-content__image"])}
+						{showImage && getDefaultStoryBlokImageSet(blok.image.filename, blok.image.alt, { largestImageWidth: 870, largestImageHeigth: 870 }, 850, css["highlighted-content__image"])}
 					</div>
 				</div>
 

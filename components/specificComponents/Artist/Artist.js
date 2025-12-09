@@ -19,7 +19,7 @@ export default class Artist extends Component {
 							<h1>{this.props.blok.title}</h1>
 						</div>
 						<div className={[css["box"], css["sidebar"]].join(" ")}>
-							<div className={css["artistimage"]}><img src={this.props.blok.image.filename} /></div>
+							<div className={css["artistimage"]}>{this.props.blok.image && this.props.blok.image.filename && <img src={this.props.blok.image.filename} alt={this.props.blok.image.alt || ''} />}</div>
 							<div className={css["artistdetails"]}>
 								<div className={css["artistdetailitem"]}>{this.props.blok.title}</div>
 							</div>
