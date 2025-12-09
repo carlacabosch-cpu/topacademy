@@ -51,11 +51,9 @@ export default class Headermenu extends Component {
 					{this.props.blok.menucontent.map((nestedBlok, index, array) => {
 
 						return (
-							<>
-								<li className={css[`main-header__expanded-nav-item--${index}`]} key={nestedBlok._uid}>
-									<StoryblokComponent blok={nestedBlok} last={false} index={index} mobile={true} />
-								</li>
-							</>
+							<li className={css[`main-header__expanded-nav-item--${index}`]} key={nestedBlok._uid}>
+								<StoryblokComponent blok={nestedBlok} last={false} index={index} mobile={true} />
+							</li>
 						)
 
 
@@ -98,14 +96,11 @@ export default class Headermenu extends Component {
 									onClick={this.toggleNavSideMenu.bind(this, true)} />
 							</li>
 							{this.props.blok.menucontent.map((nestedBlok, index, array) => {
-								
-									return (
-										<>
-											<li className={css[`main-header__nav-item--${index}`]} key={nestedBlok._uid}>
-												<StoryblokComponent blok={nestedBlok} last={false} index={index} mobile={false} />
-											</li>
-										</>
-									)
+								return (
+									<li className={css[`main-header__nav-item--${index}`]} key={nestedBlok._uid}>
+										<StoryblokComponent blok={nestedBlok} last={false} index={index} mobile={false} />
+									</li>
+								)
 							})}
 						</ul>
 					</nav>
