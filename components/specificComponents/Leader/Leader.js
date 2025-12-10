@@ -7,11 +7,7 @@ import { RichTextToHTML } from "../../../functions/storyBlokRichTextRenderer";
 
 export default class Teacher extends Component {
 
-	constructor(props) {
-		super(props);
-		this.props.blok.title = this.props.blok.firstname + " " + this.props.blok.lastname
-		this.props.blok.tagline = "Leader: " + this.props.blok.location;
-	}
+	
 
 	render() {
 		return (
