@@ -5,7 +5,7 @@ import Hero from "../../genericComponents/Hero/Hero";
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import { RichTextToHTML } from "../../../functions/storyBlokRichTextRenderer";
 
-export default class Teacher extends Component {
+export default class Leader extends Component {
 
 	
 
@@ -15,7 +15,7 @@ export default class Teacher extends Component {
 				<Headermenu blok={this.props.menu.content}></Headermenu>
 
 				<main>
-					<Hero blok={this.props.blok} contentTypeTag="course" />
+					<Hero blok={this.props.blok} contentTypeTag="location" />
 					<div className={css["leader-page__main-content"]}>
 						<div id="leader-page__short-description" key="leader-page__short-description" className={css["leader-page__short-description"]}>
 							<section className={css["rich-text-section--with-navigator"]}>
