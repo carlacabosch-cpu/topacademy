@@ -4,9 +4,9 @@
 /* ========== Titles ========== */
 
 @mixin main-title-font($color: $color-default) {
-  font-family: "Silkscreen", sans-serif !important;
+  font-family: "Arial", serif !important;
   font-weight: 800 !important;
-  font-size: 20px !important;
+  font-size: 38px !important;
   line-height: 44px !important;
   color: $color;
 
