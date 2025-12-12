@@ -20,7 +20,7 @@ export default class Leader extends Component {
 						<div id="leader-page__short-description" key="leader-page__short-description" className={css["leader-page__short-description"]}>
 							<section className={css["rich-text-section--with-navigator"]}>
 								<h2 className={css["rich-text-section__title"]}>My Life</h2>
-								<div className={css["rich-text-section__rich-text"]}>{RichTextToHTML({ document: this.props.blok.bio })}</div>
+								<div className={css["rich-text-section__rich-text"]}>{RichTextToHTML({ document: this.props.blok.description })}</div>
 							</section>
 						</div>
 						<div id="leader-page__short-description" key="leader-page__short-description" className={css["leader-page__short-description"]}>
