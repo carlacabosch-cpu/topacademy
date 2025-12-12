@@ -78,7 +78,7 @@
 
 
 @mixin very-small-title-font($color: $color-default) {
-  font-family: "Silkscreen", sans-serif;
+  font-family: "Playfair Display", serif;
   font-weight: 700;
   font-size: 17px;
   line-height: 28px;
@@ -113,19 +113,19 @@
 }
 
 @mixin posttitle-font-small($color: $color-default) {
-  font-family: "Playfair Display", serif;
+  font-family: "Silkscreen", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 25px;
   color: $color;
 
   @media only screen and (min-width: 800px) {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 30px;
   }
 
   @media only screen and (min-width: 1250px) {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 36px;
   }
 }
