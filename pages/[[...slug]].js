@@ -108,12 +108,17 @@ export async function getStaticProps({ params }) {
       return { notFound: true };
     }
   }
-  const menu = menudata.data.story;
+  const menu = menudata?.data?.story || {};
+
+  if (!data || !data.story) {
+    console.error("Story data missing for slug", slug, data);
+    return { notFound: true };
+  }
 
   const title = data.story.name;
-  const description = data.story.content.tagline ? data.story.content.tagline : `${title}`;
+  const description = data.story.content?.tagline ? data.story.content.tagline : `${title}`;
   const socialtags = getTags({
-    storyblokSocialTag: data.story.content.socialtag,
+    storyblokSocialTag: data.story.content?.socialtag,
     pageDefaults: {
       "og:title": title,
       "og:description": description,
