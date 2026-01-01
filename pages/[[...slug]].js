@@ -58,7 +58,31 @@ export async function getStaticProps({ params }) {
 
   const storyblokApi = getStoryblokApi();
 
-  let { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+  let data;
+  try {
+    const res = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+    data = res.data;
+  } catch (err) {
+    console.error("Storyblok get story error", {
+      slug,
+      status: err.response?.status,
+      response: err.response?.data || err.message,
+    });
+
+    // If requesting draft and we got 404, retry with published version
+    if (sbParams.version === "draft" && err.response?.status === 404) {
+      try {
+        const retryRes = await storyblokApi.get(`cdn/stories/${slug}`, { ...sbParams, version: "published" });
+        data = retryRes.data;
+      } catch (retryErr) {
+        console.error("Retry with published failed", { slug, status: retryErr.response?.status, response: retryErr.response?.data || retryErr.message });
+        return { notFound: true };
+      }
+    } else {
+      return { notFound: true };
+    }
+  }
+
   if (!data) {
     return {
       notFound: true,
@@ -66,10 +90,22 @@ export async function getStaticProps({ params }) {
   }
 
   //getting menu data needed throughout the site
-  let menudata = await storyblokApi.get(`cdn/stories/reusable/headermenu`, sbParams);
-  if (!menudata) {
-    return {
-      notFound: true,
+  let menudata;
+  try {
+    const res = await storyblokApi.get(`cdn/stories/reusable/headermenu`, sbParams);
+    menudata = res.data;
+  } catch (err) {
+    console.error("Storyblok get menu error", { status: err.response?.status, response: err.response?.data || err.message });
+    if (sbParams.version === "draft" && err.response?.status === 404) {
+      try {
+        const retryRes = await storyblokApi.get(`cdn/stories/reusable/headermenu`, { ...sbParams, version: "published" });
+        menudata = retryRes.data;
+      } catch (retryErr) {
+        console.error("Retry menu with published failed", { status: retryErr.response?.status, response: retryErr.response?.data || retryErr.message });
+        return { notFound: true };
+      }
+    } else {
+      return { notFound: true };
     }
   }
   const menu = menudata.data.story;
@@ -99,15 +135,32 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const storyblokApi = getStoryblokApi();
 
-  let { data } = await storyblokApi.get("cdn/links/");
+  let linksData;
+  try {
+    const res = await storyblokApi.get("cdn/links/");
+    linksData = res.data;
+  } catch (err) {
+    console.error("Storyblok get links error", { status: err.response?.status, response: err.response?.data || err.message });
+    if (err.response?.status === 404) {
+      try {
+        const retryRes = await storyblokApi.get("cdn/links/", { version: "published" });
+        linksData = retryRes.data;
+      } catch (retryErr) {
+        console.error("Retry links with published failed", { status: retryErr.response?.status, response: retryErr.response?.data || retryErr.message });
+        return { paths: [], fallback: 'blocking' };
+      }
+    } else {
+      return { paths: [], fallback: 'blocking' };
+    }
+  }
 
   let paths = [];
-  Object.keys(data.links).forEach((linkKey) => {
-    if (data.links[linkKey].is_folder) {
+  Object.keys(linksData.links).forEach((linkKey) => {
+    if (linksData.links[linkKey].is_folder) {
       return;
     }
 
-    const slug = data.links[linkKey].slug;
+    const slug = linksData.links[linkKey].slug;
     let splittedSlug = slug.split("/");
 
     paths.push({ params: { slug: splittedSlug } });
