@@ -38,7 +38,7 @@ export default class Headermenu extends Component {
 
 	navSideMenu() {
 		return (
-			<nav {...storyblokEditable(this.props.blok)} className={css["main-header__expanded-nav"]}>
+			<nav {...storyblokEditable(this.props.blok || {})} className={css["main-header__expanded-nav"]}>
 				<ul className={[css["main-header__expanded-nav-list"]].join("\n")} onClick={this.closeExpandedNavDropdown.bind(this)}>
 					<li className={css["main-header__expanded-nav-item--home"]} key="mainlogo">
 						<a href="/">
@@ -48,16 +48,16 @@ export default class Headermenu extends Component {
 							</div>
 						</a>
 					</li>
-					{this.props.blok.menucontent.map((nestedBlok, index, array) => {
+						{(Array.isArray(this.props?.blok?.menucontent) ? this.props.blok.menucontent : []).map((nestedBlok, index, array) => {
 
-						return (
-							<li className={css[`main-header__expanded-nav-item--${index}`]} key={nestedBlok._uid}>
-								<StoryblokComponent blok={nestedBlok} last={false} index={index} mobile={true} />
-							</li>
-						)
+							return (
+								<li className={css[`main-header__expanded-nav-item--${index}`]} key={nestedBlok._uid}>
+									<StoryblokComponent blok={nestedBlok} last={false} index={index} mobile={true} />
+								</li>
+							)
 
 
-					})}
+						})} 
 					{/* <li className={css["main-header__expanded-nav-item--joinus"]}>
 						<TmlButton variant="hover-blue" link href="/joinus">Join us</TmlButton>
 					</li> */}
@@ -76,7 +76,7 @@ export default class Headermenu extends Component {
 	render() {
 		return (
 			<>
-				<header {...storyblokEditable(this.props.blok)} className={css["main-header"]}>
+				<header {...storyblokEditable(this.props.blok || {})} className={css["main-header"]}>
 					<nav className={css["main-header__nav"]}>
 						<nav className={css["main-header__nav-home"]}>
 							<a href="/">
@@ -95,7 +95,7 @@ export default class Headermenu extends Component {
 									onKeyPress={this.toggleNavSideMenu.bind(this, true)}
 									onClick={this.toggleNavSideMenu.bind(this, true)} />
 							</li>
-							{this.props.blok.menucontent.map((nestedBlok, index, array) => {
+							{(Array.isArray(this.props?.blok?.menucontent) ? this.props.blok.menucontent : []).map((nestedBlok, index, array) => {
 								return (
 									<li className={css[`main-header__nav-item--${index}`]} key={nestedBlok._uid}>
 										<StoryblokComponent blok={nestedBlok} last={false} index={index} mobile={false} />
