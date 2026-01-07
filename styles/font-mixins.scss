@@ -22,7 +22,7 @@
 }
 
 @mixin pretitle-font($color: $color-default) {
-  font-family: "Silkscreen", sans-serif;
+  font-family: "Playfair Display", serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 25px;
@@ -41,7 +41,7 @@
 }
 
 @mixin title-font($color: $color-default) {
-  font-family: "Silkscreen", sans-serif;
+  font-family: "Playfair Display", serif;
   font-weight: 800;
   font-size: 28px;
   line-height: 34px;
@@ -59,7 +59,7 @@
 }
 
 @mixin small-title-font($color: $color-default) {
-  font-family: "Silkscreen", sans-serif;
+  font-family: "Playfair Display", serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 26px;
