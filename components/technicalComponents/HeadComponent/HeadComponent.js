@@ -2,7 +2,7 @@
 import * as PropTypes from "prop-types";
 import Head from "next/head";
 import Script from "next/script"
-import { hotjar } from 'react-hotjar'
+import { hotjar } from 'react-hotjar' 
 
 function getTagElement([key, value]) {
 	if (key === "title") {
